@@ -47,7 +47,7 @@ public class EmployeePayrollController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> addEmployeePayrollData(
-					@Valid @RequestBody EmployeePayrollDTO empPayrollDTO, Object log) {
+					@Valid @RequestBody EmployeePayrollDTO empPayrollDTO) {
 		EmployeePayrollData employeePayrollData = null;
 		 employeePayrollData = employeePayrollService.createEmployeePayrollData(empPayrollDTO);
 		ResponseDTO respDTO = new ResponseDTO("Create Employee Payroll Data Successfully",employeePayrollData);
