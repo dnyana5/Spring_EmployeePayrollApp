@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.extern.slf4j.Slf4j;
 
 import com.bridgelabz.employeepayrollapp.dto.EmployeePayrollDTO;
 import com.bridgelabz.employeepayrollapp.dto.ResponseDTO;
@@ -25,7 +24,6 @@ import com.bridgelabz.employeepayrollapp.services.IEmployeePayrollService;
 
 @RestController
 @RequestMapping("/employeepayrollservice")
-@Slf4j
 public class EmployeePayrollController {
 	
 	@Autowired
@@ -49,8 +47,7 @@ public class EmployeePayrollController {
 	
 	@PostMapping("/create")
 	public ResponseEntity<ResponseDTO> addEmployeePayrollData(
-					@Valid @RequestBody EmployeePayrollDTO empPayrollDTO) {
-		log.debug("Employee DTO: "+empPayrollDTO.toString());
+					@Valid @RequestBody EmployeePayrollDTO empPayrollDTO, Object log) {
 		EmployeePayrollData employeePayrollData = null;
 		 employeePayrollData = employeePayrollService.createEmployeePayrollData(empPayrollDTO);
 		ResponseDTO respDTO = new ResponseDTO("Create Employee Payroll Data Successfully",employeePayrollData);
