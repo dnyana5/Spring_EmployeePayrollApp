@@ -28,7 +28,10 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 					.orElseThrow(() -> new EmployeePayrollException("Employee with employeeId"
 													 + empId + "does not exists..!!"));
 	}
-
+	@Override
+	public List<EmployeePayrollData> getEmployeesByDepartment(String departments) {
+		return employeeRespository.findEmployeesByDepartment(departments);
+	}
 	
 	public EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO empPayrollDTO) {
 		EmployeePayrollData employeePayrollData = null;
@@ -44,11 +47,9 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 		employeePayrollData.setSalary(empPayrollDTO.salary);
 			return employeeRespository.save(employeePayrollData);
 	}
-
 	public void deleteEmployeePayrollData(int empId) {
 		EmployeePayrollData employeePayrollData = this.getEmployeePayrollDataById(empId);
 		employeeRespository.delete(employeePayrollData);
-		
 	}
 
 }

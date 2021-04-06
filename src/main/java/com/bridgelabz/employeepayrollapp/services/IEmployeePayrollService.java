@@ -11,6 +11,7 @@ public interface IEmployeePayrollService {
 	
 	EmployeePayrollData getEmployeePayrollDataById(int empId);
 	
+	List<EmployeePayrollData> getEmployeesByDepartment(String departments);
 	EmployeePayrollData createEmployeePayrollData(
 						EmployeePayrollDTO empPayrollDTO);
 	
